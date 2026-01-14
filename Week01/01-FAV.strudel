@@ -1,9 +1,14 @@
 // @title W01-01
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 1, 2026
+// @by Aalok Sud
+// @date Jan 13, 2026
 
 // 01
-sound("bd [~ rim] mt [lt ht]")
-  .dist("2:0.5")
-  .chunk(4, x => x.hurry(2))
+setcpm(90/4)
+$bass: n(irand(8).sub(15).seg(16)).scale("b:minor").s("sawtooth").lpf(300)._scope()
+$drums: s(`[
+[-  -  -  - ] [-  -  -  - ] [-  -  -  - ] [-  -  oh*3 - ],
+[hh hh hh hh] [hh hh hh*4 hh] [hh hh hh hh*4]/2 [hh hh -  - ],
+[-  -  -  - ] [oh -  -  - ] [-  -  -  - ] [-  -  -  oh ],
+[bd bd -  - ]/2 [-  -  bd - ] [bd bd - bd ] [-  -  -  - ]
+]`).bank("Rolandtr808").lpf(1000)._scope()
