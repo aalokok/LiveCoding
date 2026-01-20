@@ -1,15 +1,45 @@
 // @title W01-05
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 5, 2026
-
+// @by AalokSud
+// @date Jan 20, 2026
+// Inpired by works of Andy Stott 
 // 5
-setcps(150/60/4)
-d1: s("bongo:1").euclid(3,8).off(1/4, add(2)).delay(0.025).pan(0)
-d2: s("bongo:2").euclid(5,8).off(1/4, add(2)).delay(0.025).pan(1)
-// d3: s("bongo:12").euclid(6,8).pan(sine)
-d4: s("hh:3*4").gain(0.125)
-$: s("east:0*4").gain(0.125)
-$: s("east:2*8").gain(0.0325)
+setcpm(115/4) 
 
-d3: s("bongo*8").n(irand(10))
+$: stack(
+  // Kick 
+  s("bd:8 ~ [~ bd:8] ~ bd:8 ~ ~ ~")
+    .gain(1.5)
+    .lpf(500)
+    .crush(5)
+    .room(0.5)
+    .sometimes(x => x.speed(0.8)),
+  
+  // Snare 
+  s("~ ~ ~ cp:4 ~ cp:4 ~ ~")
+    .gain(0.9)
+    .delay(0.4)
+    .room(0.8)
+    .lpf(1000)
+    .crush(6)
+    .sometimes(x => x.fast(2)),
+  
+
+  // bass
+  note("<f1 ~ ab1 ~ eb1 ~ db1 ~>").slow(4)
+    .s("supersaw")
+    .lpf(sine.slow(6).range(150, 400))
+    .resonance(10)
+    .gain(0.4)
+    .distort(0.3)
+    .room(0.6),
+  
+  
+  // pad
+  note("<f4 ab4 eb4 db4>".slow(8))
+    .s("sine")
+    .gain(0.25)
+    .delay(0.9)
+    .room(0.95)
+    .lpf(3000)
+)
