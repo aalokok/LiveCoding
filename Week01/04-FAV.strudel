@@ -1,0 +1,56 @@
+// @title W01-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Aalok Sud
+// @date Jan 11, 2026
+// Inspired by works of Andy Stott 
+// 04
+setcpm(120/4)
+
+// Kick 
+$: s("bd:3 ~ bd:3 [~ bd:3]")
+.gain(1.2)
+.lpf(800)
+.room(0.4)
+
+// Clap/Snare 
+$: s("~ <cp:2 cp:4> ~ cp:2")
+.delay(0.3)
+.delaytime(0.125)
+.lpf(1200)
+.gain(0.9)
+
+// Hats 
+$: s("hh:8*8")
+.gain("0.5 0.3 0.6 0.4 0.7 0.3 0.5 0.4")
+.lpf(3000)
+.hpf(1000)
+.speed(0.9)
+.sometimes(x => x.speed(0.7))
+
+// Percussion layer
+$: s("~ ~ rim:2 ~")
+.gain(0.6)
+.pan(sine.slow(4))
+.delay(0.5)
+
+// Polyrhythm percussion (3 against 4)
+$: s("sd:8*3")
+.gain(0.3)
+.lpf(2000)
+.speed(1.5)
+.delay(0.4)
+
+//  Bass 
+$: note("<a1 a1 [a1 c2] a1>")
+.s("sawtooth")
+.lpf(sine.slow(4).range(200, 500))
+.gain(0.5)
+.slow(2)
+
+//  Pad
+$: note("<a2 c3 e3 d3>")
+.s("sawtooth")
+.lpf(400)
+.gain(0.4)
+.room(0.9)
+.delay(0.6)
