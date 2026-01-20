@@ -1,10 +1,17 @@
 // @title W01-02
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
-// @by vigliensoni
-// @date Jan 2, 2026
-
+// @by Aalok Sud
+// @date Jan 14, 2026
+// Nothing Else Matters(intro) by Metallica  recreated on Strudel
 // 02
-n("0*2 1 2 3 4 5 6 7")
-  .s("darbuka")
-  .gain(rand.range(0.25,0.75))
-  .cutoff(rand.range(800,4000))
+$: n("<0 2 3 2>".slow(4))
+.scale("e:minor")
+.s("sine")
+.delay(0.6)
+.room(.95)
+.lpf(350)
+.gain(0.5)
+.cutoff(sine.slow(8).range(200,500))
+$: note("e g b e4 b g").slow(2).lpf(2000).sustain(2)
+.s("gm_electric_guitar_clean")
+  
