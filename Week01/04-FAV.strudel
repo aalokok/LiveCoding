@@ -42,15 +42,15 @@ $: s("sd:8*3")
 
 //  Bass 
 $: note("<a1 a1 [a1 c2] a1>")
-.s("sawtooth")
-.lpf(sine.slow(4).range(200, 500))
-.gain(0.5)
+.s("supersaw")
+.lpf(sine.slow(4).range(1000, 3000))
+.gain(1)
 .slow(2)
 
 //  Pad
 $: note("<a2 c3 e3 d3>")
-.s("sawtooth")
-.lpf(400)
+.s("supersaw")
+.lpf(4000)
 .gain(0.4)
 .room(0.9)
 .delay(0.6)
