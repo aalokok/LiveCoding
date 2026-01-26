@@ -1,0 +1,47 @@
+// @title W02-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Aalok Sud
+// @date Jan 23, 2026
+
+samples({
+  ambient:'https://cdn.freesound.org/previews/753/753486_12880153-hq.mp3'
+})
+
+setcps(108/4/60)
+
+// Main kick - anchor pulse
+$: sound("bd:3")
+  .struct("t ~ ~ ~ t ~ ~ ~") // hits on 1 and 5 (half-time feel)
+  .gain(1.2)
+  .lpf(sine.range(70, 150).slow(8))
+  .room(0.3)
+  .speed(choose([1, 0.98])) // subtle variation
+
+// Secondary kick - adds tension on offbeats
+$: sound("bd:8")
+  .struct("~ ~ t ~ ~ ~ t ~") // hits on 3 and 7
+  .gain(0.85)
+  .speed(0.9)
+  .lpf(100)
+
+// Clap - simple syncopation
+$: sound("~ ~ cp:2 ~ ~ ~ cp:2 ~")
+  .gain(0.8)
+  .delay(0.3)
+  .delaytime(0.25)
+  .room(0.2)
+
+// Hi-hats - sparse, creates space
+$: sound("~ hh:3 ~ ~ ~ hh:3 ~ ~")
+  .gain(perlin.range(0.4, 0.7))
+  .speed(rand.range(0.95, 1.05))
+  .hpf(8000)
+  .pan(perlin.range(0.3, 0.7))
+
+// Atmospheric sample layer
+$: s("ambient")
+  .speed(0.675)
+  .lpf(sine.range(400, 1200).slow(16))
+  .room(0.7)
+  .slow(8)
+  .gain(0.8)
