@@ -1,0 +1,41 @@
+// NOTE:please reduce your volume before playing this 
+// and slowly increase it, there are harsh noises
+// @title  W02-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Aalok Sud
+// @date Jan 26, 2026
+
+setcps(0.58)
+
+// kicks - 4 against 3
+$: sound("bd:3*4, bd:8*3").speed("<1 0.87 1.13 0.94>").distort(perlin.range(0.3, 1.2)).crush(sine.range(2, 8).slow(3)).lpf(perlin.range(40, 300)).gain(1.4).bank("RolandTR909")
+
+//  snare 
+$: sound("~ ~ cp:4 ~").speed("-0.8").room(0.9).size(0.95).gain(1.0).distort(0.9).crush("3").hpf(sine.range(200, 4000).slow(7)).bank("RolandTR909")
+
+// hat - random densities
+$: sound("hh:7*<7 13 19 23>").gain(rand.range(0.2, 0.9)).speed(rand.range(0.3, 2.5)).hpf(perlin.range(5000, 15000)).crush(rand.range(3, 9)).pan(rand).cut(1).bank("RolandTR909")
+
+// Pitch-shifted cymbal 
+$: sound("cy:3").speed(sine.range(0.1, 0.4).slow(23)).room(0.95).size(0.98).gain(0.7).hpf(2000).delay(0.9).delaytime(sine.range(0.1, 0.9).slow(11)).delayfeedback(0.95).bank("RolandTR909")
+
+// Stutter bass
+$: sound("bd:0*<[5 7] [11 13] [3 5 7] [17 19]>").speed(perlin.range(0.2, 0.5)).lpf(rand.range(30, 80)).distort(sine.range(0.4, 1.0).slow(5)).gain(1.2).bank("RolandTR808")
+
+// Noise 
+$: sound("noise:8*<[3 5 8] [2 7 11] [4 9] [6 13 17]>").speed(rand.range(0.1, 3.5)).crush(rand.range(1, 6)).room(rand.range(0.3, 0.95)).gain(rand.range(0.4, 1.0)).hpf(rand.range(500, 8000)).lpf(rand.range(2000, 12000)).bank("RolandTR909")
+
+// metal
+$: sound("metal:2*<2 3 5 7>").speed(saw.range(1.5, 0.1).slow(8)).delay(0.8).delaytime(perlin.range(0.03125, 0.75)).delayfeedback(0.9).gain(0.9).hpf(1000).crush(perlin.range(2, 7)).pan(sine.slow(3)).bank("RolandTR808")
+
+// Micro-timed toms 
+$: sound("lt:2, ~ mt:3 ~, ~ ~ ~ ht:4").speed(rand.range(0.3, 1.5)).distort(perlin.range(0.5, 1.0)).room(sine.range(0.2, 0.8).slow(13)).gain(1.1).lpf(rand.range(200, 800)).crush(rand.range(2, 5)).bank("RolandTR909")
+
+// snare
+$: sound("sn:6*<0 0 [11 17 23 29] 0>").speed(perlin.range(0.2, 3.0)).cut(rand.range(1, 3)).crush(sine.range(1, 7).slow(2)).delay(0.95).delaytime(rand.range(0.01, 0.5)).delayfeedback(0.98).gain(0.8).pan(perlin).bank("RolandTR909")
+
+// swarm
+$: sound("cp:8*<[7 11] [13 17] [5 9 13] [19 23]>").speed(sine.range(0.6, 1.4).slow(7)).distort(rand.range(0.3, 1.0)).gain(perlin.range(0.3, 0.9)).room(0.7).crush(perlin.range(3, 8)).hpf(sine.range(400, 3000).slow(5)).bank("RolandTR909")
+
+// hat
+$: sound("oh:3*<3 5 7 11>").speed(perlin.range(0.5, 2.0)).gain(sine.range(0.3, 0.9).slow(9)).hpf(sine.range(4000, 12000).slow(13)).delay(perlin.range(0.2, 0.8)).delaytime(rand.range(0.0625, 0.75)).distort(perlin.range(0.2, 0.8)).bank("RolandTR909")
