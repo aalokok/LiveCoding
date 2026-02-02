@@ -1,0 +1,37 @@
+// @title W03-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date Jan 28, 2026
+// 11
+samples('github:switchangel/breaks')
+
+// 
+pad: n(irand(8)).struct("[- - - x? - - x - - - - x - - x -]")
+  .scale("c:minor").s("gm_pad_halo").distort(.5)
+
+sample: s("breaks:2").scrub("{0.1!2 0.46? 0.8!2 <0.8:1.5>}")
+  .gain(0.50).lpf(700)
+
+// 
+bass: n("<0 3 5 3>/4").scale("c2:minor").s("supersaw")
+  .lpf(300).cutoff(200).resonance(8)
+  .gain(0.6).delay(0.3).delaytime(0.125).delayfeedback(0.4)
+
+// 
+hats: s("hh*8").gain("[0.3 0.2 0.25 0.15]*2").pan(sine.slow(8))
+
+// 
+blip: n("<<0 7 5> <3 10 7> <5 0 3>>").late(0.02)
+  .scale("c4:minor").s("sine").struct("- x - - x? - - -")
+  .decay(0.05).gain(0.35).room(0.8).delay(0.5)
+  .delaytime("<0.25 0.375>").delayfeedback(0.6)
+
+// 
+sweep: s("white").lpf(perlin.slow(16).range(200,1200))
+  .gain(0.15).hpf(100).room(0.9)
+
+// 
+stab: n("<[0,4,7] [3,7,10]>").scale("c3:minor")
+  .s("square").struct("- - - - x - - -")
+  .lpf(400).attack(0.01).decay(0.3)
+  .gain(0.4).delay(0.4).delayfeedback(0.5)
