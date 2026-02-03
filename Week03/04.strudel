@@ -1,0 +1,73 @@
+// @title W03-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date Jan 30, 2026
+// 14
+
+let subPulse = s("sawtooth")
+  .note("<f1 c2 eb1>".add(perlin.range(-0.3, 0.3)))
+  .sustain(4)
+  .lpf(120)
+  .gain(0.4)
+  .slow(4)
+
+let toneDrift = s("supersaw")
+  .note("<f3 ab3 c4 eb4>".add(perlin.range(-0.5, 0.5)))
+  .sustain(8)
+  .lpf(sine.range(200, 500).slow(32))
+  .gain(0.12)
+  .room(1)
+  .slow(16)
+
+let kick = s("bd")
+  .bank("RolandTR808")
+  .lpf(1000)
+  .shape(0.3)
+  .gain(0.6)
+  .euclid(3, 8)
+
+let snare = s("sd")
+  .bank("RolandTR909")
+  .gain(0.35)
+  .room(0.3)
+  .euclid(2, 8)
+  .slow(4)
+  .sometimesBy(0.25, fast(2))
+  .degradeBy(0.2)
+
+let closedHat = s("hh")
+  .bank("RolandTR909")
+  .gain(perlin.range(0.15, 0.35))
+  .pan(perlin.range(0.3, 0.7))
+  .hpf(6000)
+  .struct("t(5,8)")
+  .sometimesBy(0.4, fast(2))
+  .degradeBy(0.3)
+
+let openHat = s("oh")
+  .bank("RolandTR909")
+  .gain(0.2)
+  .room(0.5)
+  .euclid(2, 16)
+  .slow(3)
+  .degradeBy(0.5)
+
+let rim = s("rim")
+  .bank("RolandTR909")
+  .gain(0.22)
+  .delay(0.35)
+  .delaytime(0.375)
+  .delayfeedback(0.5)
+  .euclid(3, 16)
+  .slow(5)
+  .degradeBy(0.4)
+
+stack(
+  subPulse,
+  toneDrift,
+  kick,
+  snare,
+  closedHat,
+  openHat,
+  rim
+)
