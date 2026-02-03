@@ -1,0 +1,84 @@
+// @title W03-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb2, 2026
+// 15
+let kick = s("bd")
+  .bank("RolandTR808")
+  .gain(0.55)
+  .shape(0.2)
+  .struct("t ~ ~ t ~ ~ ~ t ~ ~ t ~ ~ ~ ~ ~")
+  .slow(2)
+  .sometimesBy(0.2, silence)
+
+let metal = s("hh oh")
+  .bank("RolandTR808")
+  .gain(perlin.range(0.1, 0.28))
+  .hpf(7000)
+  .pan(rand)
+  .struct("t(9,16)")
+  .sometimesBy(0.15, fast(1.5))
+  .degradeBy(0.4)
+
+let ghost = s("sd")
+  .bank("RolandTR808")
+  .gain(0.18)
+  .speed(0.85)
+  .room(0.6)
+  .struct("~ ~ ~ ~ t ~ ~ ~ ~ ~ ~ t ~ ~ ~ ~")
+  .slow(3)
+  .degradeBy(0.5)
+
+let crackle = s("sine")
+  .note(rand.range(100, 120).segment(32))
+  .sustain(0.002)
+  .gain(perlin.range(0, 0.15))
+  .pan(rand)
+  .fast(rand.range(8, 24).segment(8))
+  .degradeBy(0.7)
+
+let smear = s("sd")
+  .bank("RolandTR808")
+  .speed(0.2)
+  .begin(0.1)
+  .gain(0.12)
+  .lpf(300)
+  .room(0.95)
+  .size(0.9)
+  .delay(0.7)
+  .delayfeedback(0.85)
+  .delaytime(0.75)
+  .slow(11)
+  .degradeBy(0.6)
+
+let subHit = s("bd")
+  .bank("RolandTR808")
+  .speed(0.4)
+  .lpf(50)
+  .gain(0.35)
+  .struct("t ~ ~ ~ ~ ~ ~ ~")
+  .slow(7)
+  .room(0.8)
+
+let metalTail = s("oh")
+  .bank("RolandTR808")
+  .speed(perlin.range(0.15, 0.4))
+  .gain(0.08)
+  .hpf(2000)
+  .lpf(perlin.range(3000, 8000).slow(13))
+  .room(0.9)
+  .delay(0.6)
+  .delayfeedback(0.8)
+  .slow(17)
+  .pan(sine.slow(19))
+  .degradeBy(0.5)
+
+stack(
+  kick,
+  metal,
+  ghost,
+  crackle,
+  smear,
+  subHit,
+  metalTail
+)
