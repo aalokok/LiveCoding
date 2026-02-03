@@ -1,0 +1,50 @@
+// @title W03-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date Jan 28, 2026
+// 12
+samples('github:switchangel/breaks')
+samples('github:switchangel/breaks')
+
+// Tighter, more controlled drums
+kick: s("bd:3").struct("x - - - x - - - x - - - x - x -")
+  .gain(0.9).lpf(120).shape(0.4).cutoff(100)
+
+snare: s("sd:5").struct("- - - x - - - x")
+  .gain(0.65).lpf(2500).room(0.2)
+
+hats: s("hh:[0|2 1]").struct("x x - x x - x -")
+  .gain("0.35 0.2 0.25 0.18").hpf(900)
+
+rim: s("rim:2").struct("- - x - - - - - - - x - - x - -")
+  .gain(0.4).hpf(3000)
+
+// Controlled bass line with movement
+bass: n("<0 0 3 5 0 0 3 0>").scale("c:minor")
+  .s("sawtooth").lpf(sine.slow(8).range(150,250))
+  .cutoff(perlin.slow(4).range(180,220)).resonance(10)
+  .gain(0.8).distort(0.15)
+
+// Flux - evolving modulated elements
+flux1: s("supersaw").n(perlin.slow(12).range(40,80))
+  .gain(perlin.slow(6).range(0.1,0.3))
+  .lpf(sine.slow(16).range(200,800))
+  .pan(sine.slow(7).range(0,1))
+  .room(0.7)
+
+flux2: s("white").lpf(perlin.slow(10).range(300,2000))
+  .hpf(perlin.slow(8).range(200,600))
+  .gain(sine.slow(14).range(0.05,0.2))
+  .delay(0.5).delayfeedback(perlin.slow(5).range(0.3,0.7))
+
+// Sparse piano - more space
+piano: n("<<[0,3,7] ~!2> <[5,8,0] ~!2> <[3,7,10] ~!5> <[0,3,7] ~>>")
+  .scale("c3:minor").s("piano")
+  .velocity(sine.slow(32).range(0.4,0.7))
+  .gain(1).lpf(1800).room(0.4)
+
+// Deep pad foundation
+pad: n(irand(4)).struct("x - - - - - - - - - - - - - - -")
+  .scale("c1:minor").s("gm_pad_halo")
+  .lpf(perlin.slow(20).range(400,700))
+  .gain(0.25).room(0.9)
