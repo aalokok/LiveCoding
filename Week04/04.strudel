@@ -1,0 +1,31 @@
+// @title W04-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 8, 2026
+// 
+
+samples('github:tidalcycles/dirt-samples')
+setcpm(130/4)
+
+let riff = note("[c2 eb2 c3 f3 f2 eb3 f2 c2] ")
+  .s("gm_guitar_harmonics")
+  .lpf(2800)
+  .gain(0.85)
+  .room(0.2)
+let bsss = note("[c2 eb2 [f3 c3 eb3]]").slow(2).s("gm_distortion_guitar:4")
+let drums= s(`[
+[-  -  dpm48_bd - ] [-  -  dpm48_bd  - ] [-  dpm48_bd  -  - ] [-  -  dpm48_bd - ],
+[- - - -] [- - oh -] [- - - -] [lt lt -  - ],
+[-  -  -  - ] [sd -  -  - ] [-  -  sd  - ] [sd  -  -  - ],
+[mt rt -  - ] [-  -  mt - ] [mt rt - mt ] [-  -  -  - ]
+]`)
+
+
+
+
+stack(
+  riff,
+  bsss,
+  drums
+  
+)
