@@ -1,8 +1,8 @@
-// @title W04-02
+// @title W04-02submit
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
 // @by AalokSud
 // @date feb 5, 2026
-// 172
+// og is 172, idky 168 sounds more accurate to me 
 // Army of Me [BJORK] Baseline 
 // Method: Played on guitar[STANDARD TUNING], used BOSS OC-5 for an octave down, used BOSS-DS1 for crush, EHX LPB3 for lpf. RECREATED ON STRUDEL.
 // TABS: https://tabs.ultimate-guitar.com/tab/503005
@@ -15,7 +15,8 @@ let Bassline = note("[bb1 c1 bb1 ab2 gb2 bb1 c1@2]")
   .distort(0.5).distvol(0.3).crush(10) 
   .lpf(1200).lpq(16)
   .gain(0.8)
-  .room(0.5)
+  .room(0.5).color("cyan")._pianoroll()
+.color("cyan")
 
 
 let voice = chord("c [eb f] gb ~ ab [bb c] ~ eb f ~ [gb f eb] db c bb ~ ab gb f ~ eb [db c] bb")
@@ -24,7 +25,7 @@ let voice = chord("c [eb f] gb ~ ab [bb c] ~ eb f ~ [gb f eb] db c bb ~ ab gb f 
 
 let click = s("hh27(16,16)").pan(sine)
 
-let kick = s("reverbkick:1*4").room("2").gain(0.35).lpf(2600).crush(7)
+let kick = s("reverbkick:1*4").room("2").gain(0.35).lpf(2600).crush(7).color("cyan")._pianoroll().color("cyan")
 
 let oh = s("~ 808oh ~ oh").fast(2).gain(0.10).room(0.8).speed("1").rarely(x=>x.speed("-1")).pan(cosine)
 
