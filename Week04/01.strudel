@@ -1,0 +1,29 @@
+// @title W04-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 5, 2026
+// 16
+setcpm(168/4)
+await initHydra()
+samples({
+  bassd: 'https://cdn.freesound.org/previews/482/482068_9637845-lq.mp3',
+  break: 'https://cdn.freesound.org/previews/685/685485_14904072-lq.mp3'
+})
+samples('github:tidalcycles/dirt-samples')
+drums: s("breaks125").splice(8,  "0 1 [2 3 0]@2 3 0@2 7").sometimes(x=>x.jux(rev).degradeBy(0)).gain(slider(1,0,1,0.05))
+pad: note("[<[c2,eb2,g2,bb2,d3][f2,ab2,c3,eb3,g3]>]/2").s("gm_pad_warm,gm_choir_aahs").gain(0.45)
+bass: s("clubkick:1").euclid(3, 8).every(16,x =>x.hurry(1)).lpf(slider(3000,500,3000)).degradeBy(0).room(0.95).roomsize(5)
+hihat: s("[hihat:1]!16")
+melody: note("c2 [eb2 f2] g2 [bb2 c3]")
+  .s("sine")
+  .lpf(sine.range(400, 2000).fast(2))
+  .resonance(15)
+  .gain(0.8)
+
+
+
+//hydra
+s0.initCam()
+src(s0).scale(1, -1).repeat(8, 5)
+  .blend(o0, 0.95)
+  .out()
