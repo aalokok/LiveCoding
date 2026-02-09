@@ -1,0 +1,30 @@
+// @title W04-05 
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 9, 2026
+
+samples('github:tidalcycles/dirt-samples')
+setcpm(160/4)
+
+let riff = note("[c2!6 eb3!2 f2!4],[eb2!6 g2!6]")
+  .s("gm_distortion_guitar:4")
+  .lpf(3500)
+  .hcutoff(80)
+  .gain(0.5)
+  .room(0.15)
+
+let bass = note("[c2 eb2 [f3 c3 eb3]]")
+  .s("gm_distortion_guitar:4")
+  .lpf(800)
+  .gain(1)
+
+let breaks = s("amencutup*16").slow(2)
+  .n("<0 4 8 12 2 6 10 14>")
+  .degradeBy(0.2)
+  .gain(0.8)
+
+stack(
+  riff,
+  bass,
+  breaks,
+)
