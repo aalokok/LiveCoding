@@ -1,0 +1,46 @@
+// @title W04-03
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 8, 2026
+// 
+
+samples('github:tidalcycles/dirt-samples')
+setcpm(130/4)
+
+// Sub bass - skippy garage rhythm
+let bass = note("c2 ~ eb2 [~ c2] ~ f2 ~ [eb2 c2]")
+  .s("sine")
+  .lpf(2800)
+  .gain(0.85)
+  .room(0.2)
+
+
+let hats = s("hh*16")
+  .degradeBy(0.3)
+  .gain(0.2)
+  .pan(perlin)
+  .room(0.6)
+  .sometimes(x => x.speed("2"))
+
+let kick = s("808bd*4")
+  .swingBy(0.1, 4)
+  .gain(0.75)
+  .lpf(1200)
+  .room(0.3)
+
+let amen = s("amencutup*16")
+  .n("<0 4 8 12 2 6 10 14>")
+  .degradeBy(0.4)
+  .gain(0.3)
+  .speed(perlin.range(0.8, 1.2))
+  .room(1)
+
+
+
+stack(
+  bass,
+  kick.mask("<0!2 1!999>"),
+  hats,
+  amen.mask("<0!4 1!999>"),
+  
+)
