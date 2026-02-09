@@ -1,0 +1,39 @@
+// @title W04-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 5, 2026
+// 172
+// Army of Me [BJORK] Baseline 
+// Method: Played on guitar[STANDARD TUNING], used BOSS OC-5 for an octave down, used BOSS-DS1 for crush, EHX LPB3 for lpf. RECREATED ON STRUDEL.
+// TABS: https://tabs.ultimate-guitar.com/tab/503005
+
+samples('github:tidalcycles/dirt-samples')
+setcpm(172/4)
+
+let Bassline = note("[bb1 c1 bb1 ab2 gb2 bb1 c1@2]") 
+  .s("gm_lead_2_sawtooth").scale("c:locrian")
+  .distort(0.5).distvol(0.3).crush(10) 
+  .lpf(1200).lpq(16)
+  .gain(0.8)
+  .room(0.5)
+
+let voice = chord("c [eb f] gb ~ ab [bb c] ~ eb f ~ [gb f eb] db c bb ~ ab gb f ~ eb [db c] bb")
+  .slow(16).sometimes(x => x.fast(4).jux(rev)).gain(0.45)
+  .s("gm_choir_aahs").room(1.5).pan(sine)
+
+let click = s("hh27(8,8)").pan(sine)
+
+let kick = s("reverbkick*4").crush(6).room(2).gain(0.25).roomsize(2)
+
+let oh = s("~ 808oh ~ oh").fast(2).gain(0.25).room(0.8).speed("1|-1")
+
+let snare = s("~ ~ ~ 808sd:1?").gain(0.5).crush(4).room(0.5)
+
+stack( 
+  Bassline.mask("<0!7 1!999>"),
+  voice,
+  kick.mask("<0!5 1!18>"),
+  click.mask("<0!4 1!16>"),
+  oh.mask("<0!6 1!12>"),
+  snare.mask("<0!8 1!12>")
+)
