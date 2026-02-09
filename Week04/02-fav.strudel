@@ -21,7 +21,7 @@ let voice = chord("c [eb f] gb ~ ab [bb c] ~ eb f ~ [gb f eb] db c bb ~ ab gb f 
   .slow(16).sometimes(x => x.fast(4).jux(rev)).gain(0.45)
   .s("gm_choir_aahs").room(1.5).pan(sine)
 
-let click = s("hh27(8,8)").pan(sine)
+let click = s("hh27(16,16)").pan(sine)
 
 let kick = s("reverbkick*4").crush(6).room(2).gain(0.25).roomsize(2)
 
