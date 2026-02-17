@@ -7,9 +7,10 @@ samples('github:tidalcycles/dirt-samples')
 $: stack(
 
 note("<eb1@4 bb0@4 gb1@4 bb0@4>")
-  .s("sine")
-  .attack(4).release(8)
-  .gain(0.9),
+  .s("supersaw")
+  .attack(2).release(4)
+  .gain(0.9)
+  .lpf(300),
 
 
 note("<eb3@2 bb2@2>")
@@ -26,14 +27,12 @@ note("<eb3@2 bb2@2>")
   xfade(
     // LEFT: your original 808 kit
     stack(
-      s("808bd ~ [808bd:6 ~] ~")
+      s("808bd:2 ~ [808bd:22 ~] ~")
         .gain(0.9)
-        .shape(0.5)
         .room(0.6)
-        .sometimes(x => x.speed(0.8))
-        .rarely(x => x.gain(0.3)),
+        .sometimes(x => x.speed(0.8)),
 
-      s("~ ~ sd:2 ~")
+      s("~ ~ insect:3 ~")
         .gain(0.75)
         .room(0.3)
         .rarely(x => x.speed(1.5).gain(0.4))
@@ -59,7 +58,7 @@ note("<eb3@2 bb2@2>")
     ),
 
    
-    slider(0.6,0,1,0.1),
+    slider(0,0,1,0.1),
 
     stack(
       s("amencutup*8")
