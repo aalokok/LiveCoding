@@ -1,0 +1,16 @@
+// @title W05-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 12 , 2026
+// 
+samples('github:tidalcycles/dirt-samples')
+$: s("<[amencutup:14] [hh27:9]>")
+.slice(8, "<[0 1 2 3 4 7 8 9]/2 [1 2 3 4]>")
+.shuffle(4)
+.delay(.3)
+.fast(2)
+.rarely(x=> x.cut("2"))
+.sometimes(x=> x.ply("2"))
+.sometimes(x=>x.when("[0!2 1 0!5]",x=>x.late(1/16)))
+.gain(1)
+.color(choose("cyan", "magenta", "yellow"))
