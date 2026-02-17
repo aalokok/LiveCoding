@@ -1,0 +1,71 @@
+//@title W05-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 15 , 2026
+samples('github:tidalcycles/dirt-samples')
+
+samples('github:tidalcycles/dirt-samples')
+
+setcps(0.5)
+
+$: xfade(
+  // === LEFT: industrial techno ===
+  stack(
+    s("reverbkick*8")
+      .shape(0.7)
+      .room(0.2)
+      .sometimes(x => x.shape(0.9).speed(0.8))
+      .postgain(0.5),
+  
+    s("metal*8")
+      .euclid(5, 8)
+      .n(rand.range(0, 5).floor())
+      .speed(perlin.range(0.5, 1.5))
+      .gain(perlin.range(0.3, 0.8))
+      .pan(rand)
+      .room(0.6)
+      .delay(0.4).delaytime(0.125).delayfeedback(0.3),
+
+    note("eb1")
+      .s("supersaw")
+      .attack(0).release(0.1)
+      .distort(1)
+      .shape(0.8)
+      .lpf(perlin.range(100, 600))
+      .lpq(6)
+      .euclid(3, 8)
+      .gain(0.9)
+      .room(0.1)
+  ),
+
+  // === CROSSFADE: move this toward 1 to bring in jungle ===
+  slider(0, 0, 1, 0.01),
+
+  // === RIGHT: jungle ===
+  stack(
+    s("amencutup*8")
+      .n("<0 4 8 12 2 6 10 14>")
+      .gain(0.9)
+      .room(0.3)
+      .fast(2)
+      .sometimes(x => x.speed(1.5))
+      .rarely(x => x.jux(rev)),
+
+    s("amencutup*16")
+      .n(run(16))
+      .gain(0.3)
+      .speed(rand.range(0.8, 1.2))
+      .lpf(2000)
+      .pan(rand)
+      .rarely(x => x.ply(2)),
+
+    // bass stabs on jungle side
+    note("<eb2 ~ [bb1 ~] ~>")
+      .s("supersaw")
+      .attack(0).release(0.08)
+      .distort(0.8)
+      .lpf(400)
+      .gain(0.8)
+      .room(0.2)
+  )
+)
