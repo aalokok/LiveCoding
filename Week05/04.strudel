@@ -8,9 +8,9 @@ setcps(0.5)
 
 $: stack(
   // 
-  s("808bd*8").n("1..8")
-    .gain(1)
-    .room(1)
+  s("hardkick:3*8")
+    .gain(0.2)
+    .room(0.3)
     .sometimes(x => x.shape(0.9).speed(0.8)),
 
   // 
