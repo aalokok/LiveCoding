@@ -1,0 +1,39 @@
+// @title W05-02
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 12 , 2026
+
+
+samples('github:tidalcycles/dirt-samples')
+
+
+$: note("<cb2@2 eb2@2>")
+  .s("supersaw")
+  .attack(1).release(2)
+  .lpf(400)
+
+// --- CHORDS ---
+$: n("0 0 0 0")
+  .chord("Cb Bb Eb Bb")
+  .voicing()
+  .s("gm_electric_guitar_clean:5")
+  .when("<0 0 1>", x => x.jux(rev).fast(2))
+
+
+
+// --- DRUMS ---
+amen: s("amencutup*8")
+  .n("0 4 8 12 2 6 10 14")
+  .gain(0.5)
+  .room(1)
+
+$: note(
+  "<[~ cb4 ~ eb4] [bb3 ~ f4 ~] [~ eb4 ~ cb4] [f4 ~ bb3 ~]>"
+)
+  .s("gm_music_box:0")
+  .attack(0.01).release(0.5)
+  .gain(0.5)
+  .delay(0.4).delaytime(0.375).delayfeedback(0.3)
+  .room(0.6)
+
+
