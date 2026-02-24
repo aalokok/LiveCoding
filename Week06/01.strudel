@@ -1,0 +1,7 @@
+//@title W06-01
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud
+// @date feb 23 , 2026
+samples('github:tidalcycles/dirt-samples')
+melody: s("alphabet*6").n("4 0 4 14 0 4").hurry(2).hpf(3000).lastOf(4,x=>x.degrade()).gain(0.5)
+drum:   s("amencutup*8").n("<0 4 8 12 2 6 10 14>").gain(0.9).room(0.3).fast(2).sometimes(x => x.speed(1.5)).rarely(x => x.jux(rev))
