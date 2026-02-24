@@ -1,10 +1,11 @@
-//@title W06-03 — Arranged
+//@title W06-03
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
 // @by AalokSud 
 // @date feb 23, 2026
 
 samples('github:tidalcycles/dirt-samples')
 
+// ── ORIGINAL PARTS ────────────────────────────────────────────
 
 let talk = s("diphone")
   .n("<0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16>")
@@ -16,16 +17,17 @@ let bass = s("bass3:6")
   .adsr("0.01:1.0:1.0:2.0")
   .crush("<16 16 16 12>")
   .sometimesBy(0.2, x => x.euclid(7, 8).hurry(2))
+  .room(1.2)
 
 let hihat = s("hh27(8,8)")
   .n(irand(12))
   .gain(0.75)
 
-
+// 
 let kick = s("808bd:4(3,8)")
-  .gain(1)
+  .gain(1).room(2)
 
-
+//
 let snare = s("808sd:4(2,8,1)")
   .gain(0.9)
   .room(0.25)
