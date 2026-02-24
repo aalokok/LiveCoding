@@ -1,0 +1,58 @@
+//@title W06-05
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud 
+// @date feb 24, 2026
+
+samples('github:tidalcycles/dirt-samples')
+
+
+
+const weirddrums = s("amencutup(8,8)")
+  .n(irand(30))
+  .gain(0.7)
+  .hurry(1.5)
+
+const numbers = s("<numbers>*8")
+  .n("<0 2 3 1 5 9 6 8 7>")
+  .gain(0.4)
+  .hurry(1.5)
+
+const pad = note("[b3 db2 b3 fb3 b2]*2")
+  .scale("b:major")
+  .s("gm_pad_halo")
+  .hurry(2)
+  .sometimes(x => x.rev())
+
+//
+const bass = note("<b4 db3 b4 fb5>")
+  .scale("b:major")
+  .s("circus")
+  .euclid(5, 8)
+  .gain(0.10)
+  .adsr("0.02:0.3:0.5:0.4")
+  .crush("<14 13 14 12>")
+  .room(0.2)
+  .fast(8)
+
+//
+const glitch = s("arpy:3(3,8,1)")
+  .note("<b4 ~ db5 ~ ~ fb4 ~ b4>")
+  .scale("b:major")
+  .speed("<1.5 2 1.2 2.5>")
+  .gain(0.5)
+  .crush(8)
+  .room(0.4)
+  .pan(rand)
+  .sometimesBy(0.35, x => x.rev())
+
+// ── ARRANGEMENT ───────────────────────────────────────────────
+arrange(
+  [2, stack(weirddrums)],                              // intro: just the amen break
+  [4, stack(weirddrums, pad)],                         // pad blooms in
+  [4, stack(weirddrums, pad, bass)],                   // bass locks in
+  [4, stack(weirddrums, pad, bass, numbers)],          // numbers layer enters
+  [6, stack(weirddrums, pad, bass, numbers, glitch)],  // glitch stabs peak
+  [4, stack(weirddrums, pad, bass, numbers)],          // glitch drops
+  [2, stack(weirddrums, pad, bass)],                   // strip to core
+  [2, stack(weirddrums)]                               // back to the break
+)
