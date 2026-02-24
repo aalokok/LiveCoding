@@ -1,0 +1,10 @@
+//@title W06-04
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by AalokSud 
+// @date feb 21, 2026
+
+samples('github:tidalcycles/dirt-samples')
+samples('github:tidalcycles/dirt-samples')
+weirddrums: s("amencutup(8,8)").n(irand(30)).gain(0.7).hurry(1.5)
+numbers:s("<numbers>*8").n("<0 2 3 1 5 9 6 8 7>").gain(0.4).hurry(1.5)
+pad: note("[b3 db2 b3 fb3 b2]*2").scale("b:major").s("gm_pad_halo").hurry(2).sometimes(x=>x.rev())
