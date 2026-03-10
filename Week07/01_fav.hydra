@@ -1,0 +1,37 @@
+//url- https://hydra.ojack.xyz/?code=JTBBJTBBYXdhaXQlMjBuYXZpZ2F0b3IubWVkaWFEZXZpY2VzLmdldFVzZXJNZWRpYSglN0IlMjBhdWRpbyUzQSUyMHRydWUlMkMlMjB2aWRlbyUzQSUyMHRydWUlMjAlN0QpJTBBczAuaW5pdENhbSgpJTBBYS5zZXRTY2FsZSgxMiklMEElMEFzcmMoczApJTBBJTIwJTIwLnNjYWxlKDElMkMlMjAwLjc1KSUyMCUyRiUyRiUyMCUwQSUyMCUyMC5zYXR1cmF0ZSgxKSUwQSUyMCUyMC5jb250cmFzdCgxLjYpJTBBJTIwJTIwLmx1bWEoMC40JTJDJTIwMC4zKSUwQSUyMCUyMC5vdXQobzEpJTBBc3JjKG8wKSUwQSUyMCUyMC5zY2FsZSgoKSUyMCUzRCUzRSUyMDAuOCklMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMEElMjAlMjAubW9kdWxhdGUoJTBBJTIwJTIwJTIwJTIwc3JjKG8wKSUwQSUyMCUyMCUyMCUyMCUyMCUyMC5yb3RhdGUoKCklMjAlM0QlM0UlMjB0aW1lJTIwKiUyMDAuMDAzKSUwQSUyMCUyMCUyMCUyMCUyMCUyMC5zY2FsZSgwLjk3KSUyQyUwQSUyMCUyMCUyMCUyMCgpJTIwJTNEJTNFJTIwMC4wMDclMjAlMkIlMjBhLmZmdCU1QjElNUQlMjAqJTIwMC4wMDA1JTIwJTIwJTIwJTIwJTIwJTIwJTJGJTJGJTIwd2FzJTIwMC4wMDQlMjAlRTIlODAlOTQlMjBtb3JlJTIwcmlwcGxlJTIwZGlzcGxhY2VtZW50JTBBJTIwJTIwKSUwQSUyMCUyMC5icmlnaHRuZXNzKC0wLjAwNSklMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMkYlMkYlMjB3YXMlMjAtMC4wMDUlMjAlRTIlODAlOTQlMjBzbG93ZXIlMjBkZWNheSUyMCUzRCUyMGxvbmdlciUyMHRyYWlscyUwQSUyMCUyMC5hZGQoJTBBJTIwJTIwJTIwJTIwc3JjKG8xKSUwQSUyMCUyMCUyMCUyMCUyMCUyMC5tb2R1bGF0ZSglMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBvc2MoKCklMjAlM0QlM0UlMjAzMCUyMCUyQiUyMGEuZmZ0JTVCMiU1RCUyMColMjA0MCUyQyUyMDAuMCUyQyUyMDApJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwLnJvdGF0ZSgoKSUyMCUzRCUzRSUyMHRpbWUlMjAqJTIwMC41KSUyQyUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMCgpJTIwJTNEJTNFJTIwMC4wMDYlMjAlMkIlMjBhLmZmdCU1QjAlNUQlMjAqJTIwMC4wMTglMEElMjAlMjAlMjAlMjAlMjAlMjApJTBBJTIwJTIwJTIwJTIwJTIwJTIwLmNvbnRyYXN0KCgpJTIwJTNEJTNFJTIwMS44JTIwJTJCJTIwYS5mZnQlNUIzJTVEJTIwKiUyMDEuMiklMEElMjAlMjAlMjAlMjAlMjAlMjAuYnJpZ2h0bmVzcygtMC4xKSUwQSUyMCUyMCUyMCUyMCUyMCUyMC5jb2xvcigwLjklMkMlMjAwLjk1JTJDJTIwMS4wKSUyQyUwQSUyMCUyMCUyMCUyMCgpJTIwJTNEJTNFJTIwMC4zNSUyMCUyQiUyMGEuZmZ0JTVCMSU1RCUyMColMjAwLjMlMEElMjAlMjApJTBBJTIwJTIwLnNhdHVyYXRlKDEpJTBBJTIwJTIwLmNvbnRyYXN0KCgpJTIwJTNEJTNFJTIwMS4yJTIwJTJCJTIwYS5mZnQlNUIyJTVEJTIwKiUyMDAuNCklMEElMjAlMjAub3V0KG8wKQ%3D%3D
+
+
+await navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+s0.initCam()
+a.setScale(12)
+
+src(s0)
+  .scale(1, 0.75) // 
+  .saturate(1)
+  .contrast(1.6)
+  .luma(0.4, 0.3)
+  .out(o1)
+src(o0)
+  .scale(() => 0.8)                    
+  .modulate(
+    src(o0)
+      .rotate(() => time * 0.003)
+      .scale(0.97),
+    () => 0.007 + a.fft[1] * 0.0005      
+  )
+  .brightness(-0.005)                    
+  .add(
+    src(o1)
+      .modulate(
+        osc(() => 30 + a.fft[2] * 40, 0.0, 0)
+          .rotate(() => time * 0.5),
+        () => 0.006 + a.fft[0] * 0.018
+      )
+      .contrast(() => 1.8 + a.fft[3] * 1.2)
+      .brightness(-0.1)
+      .color(0.9, 0.95, 1.0),
+    () => 0.35 + a.fft[1] * 0.3
+  )
+  .saturate(1)
+  .contrast(() => 1.2 + a.fft[2] * 0.4)
+  .out(o0)
