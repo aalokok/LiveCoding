@@ -1,0 +1,19 @@
+a.setScale(8)
+osc(10, -0.004, 0.5)
+  .rotate(() => time * 0.012)
+  .kaleid(12)
+  .color(0.2, 0.8, 1.0)
+  .blend(
+    osc(6, 4, Math.PI*3).rotate(() => time * 0.5).kaleid(6).color(0.75, 0.18, 0.88),
+    0.6
+  )
+  .out(o1)
+src(o0)
+  .scale(() => 0.982 - a.fft[0] * 0.03)
+  .rotate(() => 0.0008 + a.fft[1] * 0.008)
+  .modulate(src(o1), () => 0.001 + a.fft[2] * 0.05)
+  .brightness(() => -0.01 - a.fft[0] * 0.022)
+  .blend(src(o1), () => 0.055 + a.fft[0] * 0.4)
+  .contrast(() => 1.0 + a.fft[3] * 1)
+  .out(o0)
+  
