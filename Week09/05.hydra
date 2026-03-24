@@ -1,0 +1,37 @@
+await import("https://emptyfla.sh/bl4st/bundle-global.js")
+
+flameEngine.setConfig(
+  flame()
+    .colorful(0.5)
+    .mapExposure(1.8)
+    .addTransform(
+      transform()
+        .hyperbolic()
+        .rotateX()
+        .build()
+    )
+    .addTransform(
+      transform()
+        .fisheye()
+        .rotateY()
+        .build()
+    )
+    .addTransform(
+      transform()
+        .fisheye()
+        .rotateO()
+        .build()
+    )
+)
+flameEngine.start()
+
+s0.init({ src: flameEngine.canvas })
+
+a.setBins(4)
+a.setSmooth(0.97)
+
+src(s0)
+  .saturate(5)
+  .contrast(1.6)
+  .blend(src(o0).scale(1.0005).brightness(-0.015), 0.55)
+  .out(o0)
