@@ -1,0 +1,18 @@
+await loadScript("https://cdn.jsdelivr.net/gh/geikha/hyper-hydra@latest/hydra-fractals.js")
+await loadScript("https://metagrowing.org/extra-shaders-for-hydra/lib-cond.js")
+await loadScript("https://metagrowing.org/extra-shaders-for-hydra/lib-screen.js")
+
+s0.initCam()
+
+osc(6, 0.02, 1.4)
+  .modulate(noise(3, 0.5), 0.3)
+  .add(
+    src(s0)
+      .mirrorX()
+      .mirrorY()
+      .add(src(s0).edge().thresh(0.1).color(3.0, 3.0, 3.0), 1)
+      .mirrorX2(),
+    0.6
+  )
+  .blend(src(o0).scale(1.002).rotate(0.001), 0.4)
+  .out(o0)
