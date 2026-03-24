@@ -1,0 +1,15 @@
+
+await loadScript("https://metagrowing.org/extra-shaders-for-hydra/lib-noise.js")
+
+osc(16, 0.05, 5.0)
+  .diff(
+    src(o0)
+      .scale(1)
+      .rotate(0.003)
+      .modulateScale(
+        src(o0)
+          .modulate(warp(2, () => Math.sin(time * 0.01) * 0.2, 2, 3, 1.0), 0.15)
+      )
+  )
+  .brightness(-0.01)
+  .out(o0)
